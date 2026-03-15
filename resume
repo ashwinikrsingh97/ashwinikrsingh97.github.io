@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashwini Singh — Production Support Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0b0e14;
+    --bg2: #111520;
+    --bg3: #161b28;
+    --gold: #c8a951;
+    --gold-light: #e0c47a;
+    --gold-dim: rgba(200,169,81,0.15);
+    --text: #e8e4db;
+    --muted: #8a8578;
+    --line: rgba(200,169,81,0.2);
+    --card: rgba(255,255,255,0.03);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Crimson Pro', serif;
+    font-size: 17px;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── HEADER ─────────────────────────────────── */
+  header {
+    padding: 80px 0 60px;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 120px; height: 2px;
+    background: var(--gold);
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .name-block h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  .name-block h1 span {
+    color: var(--gold);
+  }
+
+  .name-block .title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 14px;
+  }
+
+  .contact-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+    padding-top: 8px;
+  }
+
+  .contact-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .contact-item .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ─── SECTION LAYOUT ─────────────────────────── */
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  section:nth-child(1) { animation-delay: 0.1s; }
+  section:nth-child(2) { animation-delay: 0.2s; }
+  section:nth-child(3) { animation-delay: 0.3s; }
+  section:nth-child(4) { animation-delay: 0.4s; }
+  section:nth-child(5) { animation-delay: 0.5s; }
+  section:nth-child(6) { animation-delay: 0.6s; }
+  section:nth-child(7) { animation-delay: 0.7s; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* ─── SUMMARY ─────────────────────────────────── */
+  .summary-text {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 760px;
+    font-style: italic;
+    border-left: 2px solid var(--gold);
+    padding-left: 24px;
+  }
+
+  .summary-text strong {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--gold-light);
+  }
+
+  /* ─── EXPERIENCE ─────────────────────────────── */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0 40px;
+    padding: 36px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    position: relative;
+  }
+
+  .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .exp-item:first-child { padding-top: 0; }
+
+  .exp-meta {
+    padding-top: 4px;
+  }
+
+  .exp-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
+
+  .exp-location {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  .exp-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .exp-content .company {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 6px 0 16px;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .exp-bullets li {
+    color: #b0aa9e;
+    font-size: 16px;
+    line-height: 1.65;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  /* ─── SKILLS ─────────────────────────────────── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .skill-tag {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 12px 18px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+
+  .skill-tag::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold-dim);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .skill-tag:hover {
+    color: var(--gold-light);
+    border-color: var(--gold);
+  }
+
+  .skill-tag:hover::before {
+    transform: translateX(0);
+  }
+
+  .skill-tag span {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── ACHIEVEMENTS ───────────────────────────── */
+  .achieve-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .achieve-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--gold);
+    padding: 28px 24px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .achieve-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+  }
+
+  .achieve-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .achieve-card .desc {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ─── AWARDS ─────────────────────────────────── */
+  .awards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .award-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    background: var(--card);
+    border-left: 3px solid var(--gold);
+  }
+
+  .award-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .award-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--text);
+  }
+
+  .award-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  /* ─── EDUCATION ──────────────────────────────── */
+  .edu-block {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0 40px;
+    align-items: start;
+  }
+
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    padding-top: 4px;
+  }
+
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--text);
+  }
+
+  .edu-school {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 6px 0 4px;
+  }
+
+  .edu-cgpa {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  /* ─── LANGUAGES ──────────────────────────────── */
+  .lang-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .lang-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    border: 1px solid var(--gold);
+    padding: 7px 20px;
+  }
+
+  /* ─── FOOTER ─────────────────────────────────── */
+  footer {
+    text-align: center;
+    padding: 48px 0 64px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────── */
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    .header-top { flex-direction: column; }
+    .contact-block { align-items: flex-start; }
+    .exp-item, .edu-block { grid-template-columns: 1fr; gap: 8px; }
+    .achieve-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HEADER -->
+  <header style="animation: fadeUp 0.6s ease 0s forwards; opacity:0; transform:translateY(20px);">
+    <div class="header-top">
+      <div class="name-block">
+        <h1>Ashwini <span>Singh</span></h1>
+        <p class="title">Production Support Engineer</p>
+      </div>
+      <div class="contact-block">
+        <div class="contact-item"><span class="dot"></span> ashwinikr.singh97@gmail.com</div>
+        <div class="contact-item"><span class="dot"></span> +91 7003475263</div>
+        <div class="contact-item"><span class="dot"></span> linkedin.com/in/ashwini-kr-singh</div>
+        <div class="contact-item"><span class="dot"></span> West Bengal, India</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUMMARY -->
+  <section>
+    <div class="section-label">Profile</div>
+    <p class="summary-text">
+      Production Support Engineer with <strong>7+ years</strong> managing mission-critical <strong>BFSI applications</strong> in high-availability environments at Tata Consultancy Services. 
+      Deep expertise in Unix/Linux troubleshooting, SQL-based validation, Autosys batch monitoring, and log analysis. 
+      Proven track record handling <strong>Sev1 incidents</strong>, performing RCA, and ensuring <strong>99%+ SLA adherence</strong> in 24×7 production ecosystems.
+    </p>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section>
+    <div class="section-label">Experience</div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Jan 2024<br>— Present</div>
+        <div class="exp-location">West Bengal, India</div>
+      </div>
+      <div class="exp-content">
+        <h3>IT Analyst</h3>
+        <div class="company">Tata Consultancy Services</div>
+        <ul class="exp-bullets">
+          <li>Promoted to IT Analyst with focus on strategic production support operations</li>
+          <li>Coordinate a 5-member support team ensuring smooth shift transitions and operational stability</li>
+          <li>Lead troubleshooting during Sev1 incidents by isolating infra, database, and application-level issues</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Oct 2020<br>— Jan 2024</div>
+        <div class="exp-location">West Bengal, India</div>
+      </div>
+      <div class="exp-content">
+        <h3>System Engineer</h3>
+        <div class="company">Tata Consultancy Services</div>
+        <ul class="exp-bullets">
+          <li>Led migration of 700+ applications across environments with minimal downtime</li>
+          <li>Conducted structured root cause analysis (RCA) and recommended preventive actions</li>
+          <li>Monitored and resolved Autosys batch job failures ensuring critical EOD processes complete without delay</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Oct 2018<br>— Oct 2020</div>
+        <div class="exp-location">West Bengal, India</div>
+      </div>
+      <div class="exp-content">
+        <h3>Assistant System Engineer</h3>
+        <div class="company">Tata Consultancy Services</div>
+        <ul class="exp-bullets">
+          <li>Supported high-availability banking, retail, and trading applications serving 700,000+ users across UAT and Production</li>
+          <li>Independently resolved 80%+ of Level 2 incidents using Unix commands (grep, awk, top, netstat), SQL queries, and Kibana/OpenShift log analysis</li>
+          <li>Handled 10–15 daily incidents (Sev1–Sev3) maintaining strict SLA compliance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTABLE NUMBERS -->
+  <section>
+    <div class="section-label">Impact by Numbers</div>
+    <div class="achieve-grid">
+      <div class="achieve-card">
+        <div class="num">7+</div>
+        <div class="desc">Years in mission-critical Production Support</div>
+      </div>
+      <div class="achieve-card">
+        <div class="num">700K+</div>
+        <div class="desc">End-users supported across BFSI platforms</div>
+      </div>
+      <div class="achieve-card">
+        <div class="num">700+</div>
+        <div class="desc">Applications migrated with minimal downtime</div>
+      </div>
+      <div class="achieve-card">
+        <div class="num">80%+</div>
+        <div class="desc">Level 2 incidents resolved independently</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <div class="section-label">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-tag"><span>Unix / Linux</span></div>
+      <div class="skill-tag"><span>SQL</span></div>
+      <div class="skill-tag"><span>Autosys Batch Monitoring</span></div>
+      <div class="skill-tag"><span>Kibana</span></div>
+      <div class="skill-tag"><span>OpenShift</span></div>
+      <div class="skill-tag"><span>AppDynamics</span></div>
+      <div class="skill-tag"><span>Incident Management</span></div>
+      <div class="skill-tag"><span>Root Cause Analysis</span></div>
+      <div class="skill-tag"><span>ITIL Framework</span></div>
+      <div class="skill-tag"><span>SLA Management</span></div>
+      <div class="skill-tag"><span>BFSI Applications</span></div>
+      <div class="skill-tag"><span>High Availability Systems</span></div>
+      <div class="skill-tag"><span>Log Analysis</span></div>
+      <div class="skill-tag"><span>24×7 Operations</span></div>
+      <div class="skill-tag"><span>Production Support</span></div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section>
+    <div class="section-label">Awards</div>
+    <div class="awards-list">
+      <div class="award-item">
+        <div class="award-icon">✦</div>
+        <div>
+          <div class="award-name">Service and Commitment Award</div>
+          <div class="award-org">Tata Consultancy Services</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">✦</div>
+        <div>
+          <div class="award-name">Performance Excellence Award</div>
+          <div class="award-org">Tata Consultancy Services</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section>
+    <div class="section-label">Education</div>
+    <div class="edu-block">
+      <div class="edu-year">2014 — 2018</div>
+      <div>
+        <div class="edu-degree">Bachelor of Technology<br>in Mechanical Engineering</div>
+        <div class="edu-school">Academy of Technology</div>
+        <div class="edu-cgpa">CGPA: 6.75</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section style="border-bottom: none;">
+    <div class="section-label">Languages</div>
+    <div class="lang-row">
+      <div class="lang-pill">English</div>
+      <div class="lang-pill">Hindi</div>
+      <div class="lang-pill">Bengali</div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; Ashwini Singh &nbsp;·&nbsp; Production Support Engineer &nbsp;·&nbsp; West Bengal, India
+  </footer>
+
+</div>
+
+</body>
+</html>
