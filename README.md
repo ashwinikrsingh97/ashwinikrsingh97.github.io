@@ -6,4 +6,4 @@ Unix/Linux · Oracle SQL/PL-SQL · AutoSys · Mainframe (JCL, SDSF) · ServiceNo
 
 ### [→ View my Portfolio](https://ashwinikrsingh97.github.io/portfolio/)
 
-📫 Connect: [LinkedIn](#) · [Email](#)
+📫 Connect: [LinkedIn](https://www.linkedin.com/in/ashwini-kr-singh/) · [Email](ashwinikr.singh97@gmail.com)
