@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The 2 AM Desk</title>
+<meta name="description" content="Ashwini Kumar Singh – Production Support Engineer (BFSI). Interactive 3D portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="margin:0">
+
+
+<canvas id="scene" aria-label="A 3D room where Ashwini works the night shift. Click objects to open sections."></canvas>
+<div id="hot"></div>
+<div class="bubble gone" id="bubble" aria-live="polite"></div>
+
+<header class="card">
+  <div class="kicker">Production Support · BFSI · 7+ yrs</div>
+  <h1>Ashwini Kumar <span>Singh</span></h1>
+  <p>It's 2 AM somewhere and a bank's batch is running. I'm the engineer who makes sure it finishes.</p>
+  <div class="hint">Drag to look around · click anything in the room</div>
+</header>
+
+<div class="controls">
+  <button class="pill alert" type="button" id="pageBtn"><span aria-hidden="true">◉</span><span class="txt">Page me</span></button>
+  <button class="pill" type="button" id="lampBtn" aria-pressed="true"><span class="lamp-dot"></span><span class="txt">Desk lamp</span></button>
+</div>
+
+<aside class="sheet" id="sheet" hidden>
+  <div class="sheet-head">
+    <span class="kicker" id="sheetKicker">About</span>
+    <div class="nav">
+      <button class="round" type="button" id="prev" aria-label="Previous section">←</button>
+      <button class="round" type="button" id="next" aria-label="Next section">→</button>
+      <button class="round" type="button" id="close" aria-label="Close">✕</button>
+    </div>
+  </div>
+  <div class="sheet-body" id="sheetBody">
+
+    <article data-sec="about" hidden>
+      <div class="meet">
+        <img src="photo.jpg" alt="Portrait of Ashwini Kumar Singh">
+        <div><h2 style="margin:0 0 4px">Hi, I'm Ashwini</h2><span class="loc">Kolkata, West Bengal · IST</span></div>
+      </div>
+      <p>I'm a <strong>Production Support Engineer</strong> for high-availability banking applications, where downtime is not an option.</p>
+      <p>I spent 7+ years at Tata Consultancy Services on the Citi account, growing from Assistant System Engineer to IT Analyst. Today I work as a <strong>Specialist in System Management at LTIMindtree</strong>.</p>
+      <p>Outside the war room I keep learning: AWS certification, sharper shell scripting, and clear reference notes my team can use at 2 AM.</p>
+      <div class="nums">
+        <div><b>700K+</b><span>users supported</span></div>
+        <div><b>700+</b><span>apps migrated</span></div>
+        <div><b>99.9%</b><span>SLA maintained</span></div>
+      </div>
+      <div class="focus">
+        <div><h3>BFSI application support</h3><span>Banking and financial services domain</span></div>
+        <div><h3>Incident management</h3><span>War-room leadership, RCA, stakeholder updates</span></div>
+        <div><h3>Unix / Linux</h3><span>Shell scripting, log analysis, process management</span></div>
+        <div><h3>Mainframe operations</h3><span>CTJU, SDSF, SARJ, batch processing and scheduling</span></div>
+      </div>
+    </article>
+
+    <article data-sec="skills" hidden>
+      <h2>The toolkit on my shelf</h2>
+      <div class="shelf">
+        <div><h3>Systems &amp; OS</h3><div class="chips"><span class="chip">Unix</span><span class="chip">Linux</span><span class="chip">Shell scripting</span></div></div>
+        <div><h3>Databases</h3><div class="chips"><span class="chip">Oracle SQL</span><span class="chip">PL/SQL</span><span class="chip">MySQL</span><span class="chip">Data validation</span></div></div>
+        <div><h3>Scheduling</h3><div class="chips"><span class="chip">AutoSys</span><span class="chip">IBM Dynamic Scheduler</span><span class="chip">EOD batch</span></div></div>
+        <div><h3>Observability</h3><div class="chips"><span class="chip">Kibana / ELK</span><span class="chip">AppDynamics</span><span class="chip">OpenShift</span></div></div>
+        <div><h3>ITSM</h3><div class="chips"><span class="chip">ServiceNow</span><span class="chip">ITIL</span><span class="chip">RCA</span><span class="chip">Change management</span></div></div>
+        <div><h3>Mainframe</h3><div class="chips"><span class="chip">JCL</span><span class="chip">SDSF</span><span class="chip">SARJ</span><span class="chip">CTJU migrations</span></div></div>
+      </div>
+    </article>
+
+    <article data-sec="experience" hidden>
+      <h2>On the monitor: my career</h2>
+      <ol class="tl">
+        <li class="now"><span class="when">Jul 2026 – Present</span><h3>Specialist, System Management</h3><span class="org">LTIMindtree · Kolkata</span></li>
+        <li><span class="when">Jan 2024 – May 2026</span><h3>IT Analyst</h3><span class="org">Tata Consultancy Services</span>
+          <ul>
+            <li>Led production support for mission-critical BFSI apps across UAT and Production.</li>
+            <li>Managed a 5-member support team across 24x7 shifts.</li>
+            <li>Handled Sev1 incidents end to end across app, database and infra layers.</li>
+            <li>Ran mainframe batch with SDSF, SARJ and IBM Dynamic Scheduler; executed CTJU migrations.</li>
+          </ul></li>
+        <li><span class="when">Oct 2020 – Jan 2024</span><h3>System Engineer</h3><span class="org">Tata Consultancy Services</span>
+          <ul>
+            <li>Led migration of 700+ applications with minimal downtime.</li>
+            <li>Fixed AutoSys batch failures to keep EOD on time.</li>
+            <li>Shipped RCA-based fixes that cut repeat incidents.</li>
+            <li>Ran Change, Problem and Incident Management under ITIL.</li>
+          </ul></li>
+        <li><span class="when">Oct 2018 – Oct 2020</span><h3>Assistant System Engineer</h3><span class="org">Tata Consultancy Services</span>
+          <ul>
+            <li>Supported banking and trading apps serving 700,000+ users.</li>
+            <li>Resolved 80%+ of L2 incidents on my own using Unix, SQL, Kibana and OpenShift.</li>
+            <li>Handled 10–15 incidents a day (Sev1–Sev3) within SLA.</li>
+          </ul></li>
+      </ol>
+    </article>
+
+    <article data-sec="awards" hidden>
+      <h2>Two trophies, both earned at 2 AM</h2>
+      <div class="trophy"><div class="cup">1</div><div><h3>Service &amp; Commitment Award</h3><span class="org">Tata Consultancy Services</span></div></div>
+      <div class="trophy"><div class="cup">2</div><div><h3>Performance Excellence Award</h3><span class="org">Tata Consultancy Services</span></div></div>
+      <div class="nums">
+        <div><b>3</b><span>promotions</span></div>
+        <div><b>5</b><span>engineers led</span></div>
+        <div><b>80%+</b><span>L2 solved solo</span></div>
+      </div>
+    </article>
+
+    <article data-sec="education" hidden>
+      <h2>The frame on the wall</h2>
+      <div class="degree">
+        <span class="when">2014 – 2018</span>
+        <h3>B.Tech, Mechanical Engineering</h3>
+        <span class="org">Academy of Technology · CGPA 6.75</span>
+      </div>
+      <p>Trained as a mechanical engineer, I moved into IT and learned production systems on the job, one incident at a time.</p>
+      <p><strong>Now studying:</strong> AWS certification and advanced shell scripting.</p>
+    </article>
+
+    <article data-sec="contact" hidden>
+      <h2>Let's connect</h2>
+      <p>Open to senior production support roles, cloud-adjacent work and collaborations in BFSI.</p>
+      <div class="contact">
+        <div class="crow"><span>Email</span><a href="mailto:ashwinikr.singh97@gmail.com">ashwinikr.singh97@gmail.com</a><button class="copy" type="button" data-copy="ashwinikr.singh97@gmail.com">Copy</button></div>
+        <div class="crow"><span>Phone</span><a href="tel:+917003475263">+91 70034 75263</a><button class="copy" type="button" data-copy="+917003475263">Copy</button></div>
+        <div class="crow"><span>LinkedIn</span><a href="https://www.linkedin.com/in/ashwini-kr-singh/" target="_blank" rel="noopener">linkedin.com/in/ashwini-kr-singh</a><button class="copy" type="button" data-copy="https://www.linkedin.com/in/ashwini-kr-singh/">Copy</button></div>
+      </div>
+    </article>
+  </div>
+</aside>
+
+<nav class="dock" id="dock" aria-label="Sections"></nav>
+<div class="banner red" id="alarm" hidden role="alert"><span>Sev1: payments batch down. Tap the ringing phone.</span><output id="alarmT">0.0s</output></div>
+<div class="banner green" id="toast" hidden role="status"></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+<script src="app1.js"></script>
+<script src="app2.js"></script>
+<script src="app3.js"></script>
+</body>
+</html>
