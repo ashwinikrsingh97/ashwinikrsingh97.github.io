@@ -1,6 +1,6 @@
 # Ashwini Kumar Singh
 
-Production Support Engineer | 7+ yrs L2 Support | BFSI Domain
+Production Support Engineer · Specialist, System Management at LTM | 8+ yrs L2 Support | BFSI Domain
 
 Unix/Linux · Oracle SQL/PL-SQL · AutoSys · Mainframe (JCL, SDSF) · ServiceNow · Kibana/ELK · AppDynamics · OpenShift
 
