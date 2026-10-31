@@ -62,11 +62,11 @@ a{color:inherit}
 
 /* ---------- loader: simple and quiet ---------- */
 .loader{display:none}
-.js .loader{display:grid;place-items:center;position:fixed;inset:0;z-index:50;padding:16px;overflow:hidden;background:var(--bg);
+.js .loader{display:grid;place-items:center;position:fixed;inset:0;z-index:50;padding:16px;overflow:hidden;
+  background:radial-gradient(circle at 50% 48%,#0f1d1e 0,#0d1719 140px,#0b1215 280px,#0a0e13 420px,var(--bg) 560px) var(--bg);
   transition:opacity .8s ease .35s,visibility 0s linear 1.2s}
 .loader.out{opacity:0;visibility:hidden;pointer-events:none}
-.ld-glow{position:absolute;left:50%;top:50%;width:min(720px,140vw);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(95,225,196,.13),rgba(95,225,196,.04) 55%,transparent);animation:ldBreath 4s ease-in-out infinite}
+.ld-glow{display:none}
 @keyframes ldBreath{50%{transform:translate(-50%,-50%) scale(1.08);opacity:.75}}
 .ld-wrap{position:relative;display:grid;justify-items:center;text-align:center;transition:transform 1s var(--ease),opacity .7s ease,filter .8s ease}
 .loader.out .ld-wrap{transform:scale(1.06);opacity:0;filter:blur(6px)}
@@ -388,7 +388,7 @@ section{position:relative}
 .pg-floor{animation:pgFloor 2.4s ease-in-out infinite}
 @keyframes pgFloor{50%{opacity:.6}}
 .pager.pager3d{transform:none;animation:none;width:min(100%,470px);aspect-ratio:1/1;border-radius:28px;
-  background:radial-gradient(60% 55% at 50% 58%,rgba(95,225,196,.10),transparent 70%),radial-gradient(45% 12% at 50% 92%,rgba(0,0,0,.45),transparent 70%)}
+  background:radial-gradient(60% 55% at 50% 58%,rgba(95,225,196,.08),rgba(95,225,196,.03) 40%,rgba(95,225,196,0) 72%)}
 .pager.pager3d .pg-svg{visibility:hidden}
 .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .foot a{text-decoration:none}
